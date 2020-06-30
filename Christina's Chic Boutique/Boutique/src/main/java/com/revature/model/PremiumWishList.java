@@ -58,6 +58,13 @@ public class PremiumWishList {
 		return date_of_creation;
 	}
 	
+	public void removeItem() {
+		
+	}
+	
+	public void copyList() {
+		
+	}
 	
 //	public static void main(String...args) {
 //		PremiumWishList list = new PremiumWishList();
