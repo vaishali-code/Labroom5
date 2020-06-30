@@ -28,7 +28,7 @@ public class Dress {
 		this.material = material;
 		this.size = size;
 		this.printPattern = printPattern;
-		this.cost = getCost(this.inStock, this.material);
+		this.cost = setCost(this.inStock, this.material);
 	}
 
 	/**
@@ -75,10 +75,15 @@ public class Dress {
 	public void setPrintPattern(String printPattern) {
 		this.printPattern = printPattern;
 	}
-
-	public static double getCost(int inStock, String material) {
+	/**
+	 * @return the cost
+	 */
+	public double getCost() {
+		return cost;
+	}
+	public static double setCost(int inStock, String material) {
 		double cost =0;
-		if (inStock == 0) {
+		if (inStock != 0) {
 			switch (material) {
 			case "Cotton":
 				cost = 10;
