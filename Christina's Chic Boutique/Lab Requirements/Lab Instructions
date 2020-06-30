@@ -1,0 +1,9 @@
+For this lab, you will be tasked with designing and building features for an application called "Christina's Chic Boutique" over the next four weeks. You'll frequently work in various groups on a different feature, often being asked to extend an existing feature or build a completely new one.
+
+The application will have five primary features:
+
+Feature 1: A Customer Feature which supplies information about customers.
+Feature 2: A Product Feature which supplies information about products that can be purchased.
+Feature 3: An Account Feature which supplies information about a customer's account.
+Feature 4: A Store Feature which supplies information about available stores from which products can be purchased.
+Feature 5: A Wish List Feature which supplies information about a customer's wish list.
