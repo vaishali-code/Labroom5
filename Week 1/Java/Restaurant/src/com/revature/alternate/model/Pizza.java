@@ -1,5 +1,29 @@
 package com.revature.alternate.model;
 
+/*
+ * If you want to import all of the classes from a package,
+ * use the "*" wildcard symbol.
+ * 
+ * Note that Java prioritizes more specific imports.
+ * 
+ * If, for instance, I import com.revature.util.Arithmetic
+ * and I import another class (that does not exist in this
+ * application) called com.revature.otherpackage.* AND a class
+ * called Arithmetic exists in this package as well, Java will
+ * use the explicitly imported Arithmetic rather than the one that
+ * would have been imported using the * symbol.
+ */
+
+/*
+ * import statements go after the package declaration
+ * and before our class definition.
+ * 
+ * Imports are for classes - NOT packages. You import classes.
+ */
+
+import com.revature.util.Arithmetic;
+import com.revature.util.Logical;
+
 public class Pizza {
 
 	/*
@@ -24,5 +48,19 @@ public class Pizza {
 		 * name, don't as it is bad practice.
 		 */
 		com.revature.model.Pizza p2 = new com.revature.model.Pizza();
+		
+		/*
+		 * What if I want to use our Arithmetic class? It's in a different
+		 * package. This means I need to import it.
+		 */
+		
+		Arithmetic a = new Arithmetic();
+		Logical l = new Logical();
+		
+		/*
+		 * This class is not importable as I created it in
+		 * the default package.
+		 */
+//		NotImportable ni = new NotImportable();
 	}
 }
