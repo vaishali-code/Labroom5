@@ -84,6 +84,42 @@ public class PizzaShop {
 		}
 	}
 	
+	/*
+	 * This method tracks whether or not the pizza shop is
+	 * open by keeping track of the number of employees that
+	 * are still present at the shop. When the number of
+	 * employees is 0, the shop is no longer open for
+	 * business.
+	 */
+	public void hoursOfOperation() {
+		/*
+		 * We will use a while loop to perform an action
+		 * while there are still employees in the shop.
+		 */
+		
+		while(this.numEmployees > 0) {
+			System.out.println("We're still open!");
+			this.numEmployees--; //Modify numEmployees so that we can eventually terminate loop!
+		}
+		
+		System.out.println("We're closed!");
+	}
+	
+	/*
+	 * This method allows us to hire a certain number of
+	 * employees. That number is passed into the method.
+	 */
+	public void hireEmployees(int newEmployees) {
+		
+		/*
+		 * A do-while loop is guaranteed to run at least once,
+		 * even if the while statement evaluates to false.
+		 */
+		do {
+			this.numEmployees++; //increment employees by 1
+		}while(newEmployees > 0);
+	}
+	
 	
 
 	public static void main(String... args) {
@@ -93,8 +129,6 @@ public class PizzaShop {
 		Pizza alfredo = new Pizza(1, "Alfredo", 34.2f);
 
 		PizzaShop christinas = new PizzaShop(10, "Christina's", 1000000);
-		
-		
 
 		System.out.println("======Order 1=======");
 		christinas.acceptPizzaOrders(cheese);
@@ -110,5 +144,12 @@ public class PizzaShop {
 		
 		System.out.println("========Employee Roll Call!========");
 		christinas.employeeCount();
+		
+		System.out.println("==========Hours Of Operations=======");
+		christinas.hoursOfOperation();
+		
+		System.out.println("==============Hire Employees=============");
+		christinas.hireEmployees(-2);
+		System.out.println(christinas.numEmployees);
 	}
 }
