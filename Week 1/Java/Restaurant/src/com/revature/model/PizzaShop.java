@@ -5,6 +5,30 @@ public class PizzaShop {
 	int numEmployees;
 	String name;
 	int budget;
+	/*
+	 * This is the syntax for creating an array.
+	 * You you have a reference type for each object/value
+	 * inside of the array.
+	 * 
+	 * "pies" is the reference variable.
+	 * 
+	 * The [] symbol denotes that it is an array. Note
+	 * that Java is not too picky about where you place it.
+	 * 
+	 * The {} itself is the initialization of the array.
+	 * 
+	 * Note that you cannot change the size of an array. So
+	 * if you initialize an array with nothing, you're stuck
+	 * with that size.
+	 */
+//	(MOST COMMON) Pizza pies[] = {}; //creates an array with nothing in it
+//	Pizza pies[] = new Pizza[4]; //creates an array with nothing in it but reserves 4 spaces
+	Pizza pies[] = new Pizza[] {
+			new Pizza(10, "Cheese", 10.0f), 
+			new Pizza(20, "Veggie", 8.09f),
+			new Pizza(30, "Sausage", 7.54f),
+			new Pizza(21, "Pepperoni", 21.33f)
+			};
 	
 	public PizzaShop(int numEmployees, String name, int budget) {
 		super();
@@ -120,7 +144,11 @@ public class PizzaShop {
 		}while(newEmployees > 0);
 	}
 	
-	
+	public void printMenu() {
+		for(int i = 0; i < pies.length; i++) {
+			System.out.println(pies[i].topping + ": $" + pies[i].price);
+		}
+	}
 
 	public static void main(String... args) {
 		Pizza cheese = new Pizza(10, "Cheese", 10.0f);
@@ -131,7 +159,23 @@ public class PizzaShop {
 		PizzaShop christinas = new PizzaShop(10, "Christina's", 1000000);
 
 		System.out.println("======Order 1=======");
-		christinas.acceptPizzaOrders(cheese);
+		
+		/*
+		 * So how do I access the pies in my pizza array?
+		 * Arrays have zero-based indices. In other words,
+		 * the first pizza actually has an index of "0".
+		 * 
+		 * This means that the valid indices for an array are:
+		 * 
+		 * 0 to (length - 1)
+		 * 
+		 * Note that in this example, the length of our array
+		 * is 4, and the indices are 0, 1, 2, and 3
+		 */
+		
+		System.out.println("=====VIEW OUR MENU=====");
+		christinas.printMenu();
+		christinas.acceptPizzaOrders(christinas.pies[0]);
 		System.out.println("=======Order 2=======");
 		christinas.acceptPizzaOrders(cheese, veggie);
 		System.out.println("=======Order 3========");
