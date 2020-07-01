@@ -17,9 +17,10 @@ public class Pizza{
 	 * Let's define some properties of our pizza!
 	 */
 	
-	int diameter = 0; //diameter of pizza in inches
-	String topping = "n/a"; //pizza topping type
-	float price; //you DON'T have to initialize this with a value
+	public int diameter = 0; //diameter of pizza in inches
+	protected String topping = "n/a"; //pizza topping type
+	/*default*/ float price; //you DON'T have to initialize this with a value
+	private String secretIngredient = "some formula";
 	
 	/*
 	 * Let's create our own constructor for the Pizza class. 
@@ -30,6 +31,49 @@ public class Pizza{
 		super(); //This is a call to the Object class's constructor.
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + diameter;
+		result = prime * result + Float.floatToIntBits(price);
+		result = prime * result + ((secretIngredient == null) ? 0 : secretIngredient.hashCode());
+		result = prime * result + ((topping == null) ? 0 : topping.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pizza other = (Pizza) obj;
+		if (diameter != other.diameter)
+			return false;
+		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
+			return false;
+		if (secretIngredient == null) {
+			if (other.secretIngredient != null)
+				return false;
+		} else if (!secretIngredient.equals(other.secretIngredient))
+			return false;
+		if (topping == null) {
+			if (other.topping != null)
+				return false;
+		} else if (!topping.equals(other.topping))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Pizza [diameter=" + diameter + ", topping=" + topping + ", price=" + price + ", secretIngredient="
+				+ secretIngredient + "]";
+	}
+
 	//A constructor using fields
 	public Pizza(int diameter, String topping, float price) {
 		this.diameter = diameter;
@@ -154,6 +198,13 @@ public class Pizza{
 		//whatever value another reference points
 		//to.
 		short priceAgain = newPrice;
+		
+		/*
+		 * Currently, we can directly any member of the Pizza
+		 * class. In other words...
+		 */
+		
+		pepperoni.diameter = -90; //This is not how we want to use this data member...
 	}
 }
 
