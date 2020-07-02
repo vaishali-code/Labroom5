@@ -24,6 +24,13 @@ package com.revature.alternate.model;
 import com.revature.util.Arithmetic;
 import com.revature.util.Logical;
 
+/*
+ * If you want to import a static member of a class, you must use
+ * a static import.
+ */
+
+import static com.revature.model.Coffee.staticCoffeeMethod;
+
 public class Pizza {
 
 	/*
@@ -62,5 +69,9 @@ public class Pizza {
 		 * the default package.
 		 */
 //		NotImportable ni = new NotImportable();
+		
+		//Using a static import
+		
+		staticCoffeeMethod();
 	}
 }
