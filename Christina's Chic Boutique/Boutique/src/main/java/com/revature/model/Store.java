@@ -2,8 +2,8 @@ package com.revature.model;
 
 public class Store{
 
-	String storeName = "n/a"; //Name of the store
-	String storeLocation = "n/a";
+	String storeName; //Name of the store
+	String storeLocation;
 	int inventory;
 	int employees; 
 	float shippingTime;
@@ -18,7 +18,7 @@ public class Store{
 		else System.out.println("Invalid input. Try again.");
 	
 	}
-	
+	public Store() {}
 
 	public static float shippingCalculation(float shippingTime, int employees) {
 	if (employees < 1) {
@@ -27,18 +27,13 @@ public class Store{
 	else	return shippingTime/employees;
 	}
 	
-	public 	void storeCity(String storeLocation) {
-		this.storeLocation = storeLocation;
-	}
+		
 	
-	
-	
-	public Store() {
-	
-	}
 	
 	public static void main(String []args) {
 		
+
+          	
 		Store boutique = new Store();
 		boutique.storeName = "Christina's Chic Boutique";
 		boutique.storeLocation = "Los Angeles";
