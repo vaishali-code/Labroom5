@@ -1,10 +1,13 @@
 package com.revature.model;
 
-public class PizzaShop {
+import java.util.Arrays;
 
-	int numEmployees;
-	String name;
-	int budget;
+public class PizzaShop /*extends Object is redundant in this case*/ {
+
+	//Instance Scope (inside of the class, but outside of our methods.
+	private int numEmployees;
+	private String name;
+	private int budget;
 	/*
 	 * This is the syntax for creating an array.
 	 * You you have a reference type for each object/value
@@ -34,6 +37,49 @@ public class PizzaShop {
 		super();
 		this.numEmployees = numEmployees;
 		this.name = name;
+		this.budget = budget;
+	}
+	
+	/*
+	 * Because our data members are now private, we need some
+	 * way of allowing read and write access to those data
+	 * members. In order to do this, we need getters and
+	 * setters.
+	 * 
+	 * The naming conventions for getters and setter is:
+	 * 
+	 * getFieldName
+	 * setFieldName
+	 */
+	
+	public int getNumEmployees() {
+		return this.numEmployees;
+	}
+	
+	public void setNumEmployees(int numEmployees) {
+		
+		if(numEmployees < 0) {
+			System.out.println("You're wrong. Impossible.");
+		} else {
+			this.numEmployees = numEmployees;
+		}	
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		//Put custom logic here.
+		this.name = name;
+	}
+	
+	public int getBudget() {
+		return this.budget;
+	}
+	
+	public void setBudget(int budget) {
+		//Custom logic here.
 		this.budget = budget;
 	}
 
@@ -145,9 +191,72 @@ public class PizzaShop {
 	}
 	
 	public void printMenu() {
+		//Loop scope
 		for(int i = 0; i < pies.length; i++) {
 			System.out.println(pies[i].topping + ": $" + pies[i].price);
 		}
+	}
+
+	/*
+	 * We'll go ahead and override the "toString" method.
+	 * This method returns a String representation of your
+	 * object.
+	 */
+	
+	@Override
+	public String toString() {
+		return "PizzaShop [numEmployees=" + numEmployees + ", name=" + name + ", budget=" + budget + ", pies="
+				+ Arrays.toString(pies) + "]";
+	}
+	
+	/*
+	 * The equals method is also inherited from the Object class.
+	 * This method provides a way of comparing two objects based
+	 * on the values of their data members.
+	 */
+	
+	@Override
+	public boolean equals(Object obj) {
+		/*
+		 * Interestingly enough, the default implementation of 
+		 * the equals method compares reference equality.
+		 */
+//		if (this == obj)
+//			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PizzaShop other = (PizzaShop) obj;
+		if (budget != other.budget)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (numEmployees != other.numEmployees)
+			return false;
+		if (!Arrays.equals(pies, other.pies))
+			return false;
+		return true;
+	}
+	
+	/*
+	 * The hashCode method is used by Java in order to more easily
+	 * lookup objects in memory. It generates a hash code for each
+	 * object and compartmentalizes it based on the returned hash code.
+	 */
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + budget;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + numEmployees;
+		result = prime * result + Arrays.hashCode(pies);
+		return result;
 	}
 
 	public static void main(String... args) {
@@ -155,9 +264,23 @@ public class PizzaShop {
 		Pizza veggie = new Pizza(17, "Veggie", 11.07f);
 		Pizza sausage = new Pizza(89, "Sausage", 9.87f);
 		Pizza alfredo = new Pizza(1, "Alfredo", 34.2f);
+		
+		cheese.price = 45.03f; //I can directly access this price as I'm in the same package and it has default access
 
 		PizzaShop christinas = new PizzaShop(10, "Christina's", 1000000);
-
+		PizzaShop bobbys = new PizzaShop(8, "Bobby's", 100);
+		PizzaShop pizzaShop = new PizzaShop(10, "Christina's", 1000000);
+		
+		System.out.println("=======Reference Equality======");
+		//reference equality
+		System.out.println(christinas == bobbys);
+		System.out.println(christinas == pizzaShop);
+		
+		System.out.println("========Object Equality Using equals method");
+		//comparison using equals
+		System.out.println(christinas.equals(bobbys));
+		System.out.println(christinas.equals(pizzaShop));
+		
 		System.out.println("======Order 1=======");
 		
 		/*
@@ -173,6 +296,8 @@ public class PizzaShop {
 		 * is 4, and the indices are 0, 1, 2, and 3
 		 */
 		
+		System.out.println("=========PIZZA SHOP INFO=========");
+		System.out.println(christinas);
 		System.out.println("=====VIEW OUR MENU=====");
 		christinas.printMenu();
 		christinas.acceptPizzaOrders(christinas.pies[0]);
@@ -196,4 +321,5 @@ public class PizzaShop {
 		christinas.hireEmployees(-2);
 		System.out.println(christinas.numEmployees);
 	}
+
 }
