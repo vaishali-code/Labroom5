@@ -1,0 +1,58 @@
+For the first part of the lab, each group will be tasked with the following:
+
+1) Pull the instructions for the lab and the lab skeleton from the master branch in order to view the existing project.
+
+2) Create a branch that corresponds to the feature you have been assigned and push this branch up to git. Note that each group should only push up one copy of their feature branch that will be used for the remainder of the program.
+
+2) Depending on the feature you've been assigned, complete the following tasks together:
+
+1) Customer Feature:
+
+Create a "PremiumCustomer" model in the com.revature.model folder. This model should have some way of keeping track of a customer's name, address, phone number, age, and rewards points.
+
+The model should also define the following behavior:
+
+A customer's information should be able to changed.
+You should be able to show a customer some rewards that they are eligible for depending on how many points they have.
+A customer's name should have a minium and maximum length.
+
+2) Product Feature:
+
+Create a "Dress" model in the com.revature.model folder. This model should have some way of keeping track of a dress's print pattern, brand, cost, stock availability, material, and size.
+
+The model should also define the following behvaior:
+
+A dress's cost should be able to be modified based on its material and availability.
+A dress's availability should have a minimum value of zero.
+A dress's print pattern, material, and size should be able to be altered in order to make custom orders.
+
+3) Account Feature:
+
+Create a "PremiumAccount" model in the com.revature.model folder. This model should have some way of keeping track of an account's status, owner, account age, number of purchases, and account number.
+
+The model should also define the following behavior:
+
+An account's information (minus the status) should be able to be modified only if the account's status is active.
+An account's age should be used to determine some premium perk for the owner.
+An account's number of purchases should have a minimum value of zero.
+
+4) Store Feature:
+
+Create an "OnlineStore" model in the com.revature.model folder. This model should have some way of keeping track of a store's inventory (how many products in stock), the store's name, the average estimated shipping time of products, the number of employees working at the store, and the location (address) of the store.
+
+The model should also define the following behavior:
+
+A store's estimated shipping time should be somehow based on the number of employees working at that store.
+A store's information should be able to be updated.
+A store's number of employees should not be less than zero.
+
+5) Wish List Feature:
+
+Create a "PremiumWishList" model in the com.revature.model folder. This model should have some way of keeping track of the number of objects on a wish list, the owner of the wish list, the date the list was created, and a name of the wish list.
+
+The model should also define the following behavior:
+
+A wish list's information should be able to be changed.
+The owner of a wish list should be able to remove objects from the list.
+A wish list should be able to be copied.
+
