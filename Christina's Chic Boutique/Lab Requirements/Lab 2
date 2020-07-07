@@ -1,6 +1,14 @@
-As in the first part of this lab, your group will be assigned one of the existing features to work on. This time around, your job is to properly encapsulate the model you've been assigned. This means that:
+As in the first part of this lab, your group will be assigned one of the existing features to work on. This time around, your job is to:
+
+1) Properly encapsulate the model you've been assigned. This means that:
 
 There should be no direct access to data members.
-There should, howevr, be a way to modify data members.
+There should, however, be a way to modify and read data members.
 
-You should also refactor any code that you believe could be better, leaving comments to explain your group's though process.
+*Your model should also follow the Java Bean design pattern.
+
+2) If possible, you should then look at the other models which exist in the project and determine if you can use one of those models as a field within your model in order to better abstract the code.
+
+3) Create a custom exception that you throw and handle in some way within your model.
+
+4) You should also refactor any code that you believe could be better, leaving comments to explain your group's though process.
